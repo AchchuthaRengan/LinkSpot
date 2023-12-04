@@ -1,0 +1,74 @@
+﻿@model BO.Person
+
+@{
+    ViewBag.Title = "Index";
+}
+@using (Html.BeginForm("Create", "Register", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+<div class="responsive d-flex w-100">
+    <div class="container w-100 d-inline-block" align="center">
+        <h2 style="font-size:10vw;font-weight:bold;">Register</h2>
+        @if (TempData["Message"] != null)
+        {
+            <div class="container alert alert-dismissible alert-dark border border-dark bg-light">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                <h4 class="fw-bolder">@TempData["Message"].ToString()</h4>
+            </div>
+        }
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <h5 class="text-dark fw-bolder">Name</h5>
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control border border-dark" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <h5 class="text-dark fw-bolder">Email</h5>
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.UserEmail, new { htmlAttributes = new { @class = "form-control border border-dark" } })
+                @Html.ValidationMessageFor(model => model.UserEmail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <h5 class="text-dark fw-bolder">Password</h5>
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control border border-dark" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <h5 class="text-dark fw-bolder">Confirm-Password</h5>
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control border border-dark" } })
+                @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Register" class="btn btn-outline-dark fw-bolder" />
+            </div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <div class="form-group">
+            <h3 style="font-size:3vw; font-weight:bolder;">Already Have an Account??</h3>
+            <br />
+            @Html.ActionLink("Login", "Index", new { Controller = "Login", Area = "Authorization" }, new { @class = "btn btn-outline-dark fw-bolder", style = "padding: 20px 40px; font-size: 40px; border-radius: 5px;" })
+        </div>
+    </div>
+    <div align="center" style="background-color: #E27BF5" class="container w-100 p-3">
+        <h1 class="fw-bolder" style="font-size: 4vw; font-weight: bolder">Join Us! and start spotting!</h1>
+        <img src="~/Content/Images/signup.png" style="width:40vw; height:40vw;" class="mw-100" alt="Max-width 100%" />
+    </div>
+</div>
+}
+

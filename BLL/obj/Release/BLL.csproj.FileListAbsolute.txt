@@ -1,0 +1,15 @@
+F:\EDUCATIVE.IO\Finalized\LinkSpot\BLL\bin\Release\BLL.dll
+F:\EDUCATIVE.IO\Finalized\LinkSpot\BLL\bin\Release\BLL.pdb
+F:\EDUCATIVE.IO\Finalized\LinkSpot\BLL\bin\Release\BO.dll
+F:\EDUCATIVE.IO\Finalized\LinkSpot\BLL\bin\Release\DBLL.dll
+F:\EDUCATIVE.IO\Finalized\LinkSpot\BLL\bin\Release\EntityFramework.dll
+F:\EDUCATIVE.IO\Finalized\LinkSpot\BLL\bin\Release\BO.pdb
+F:\EDUCATIVE.IO\Finalized\LinkSpot\BLL\bin\Release\BO.dll.config
+F:\EDUCATIVE.IO\Finalized\LinkSpot\BLL\bin\Release\DBLL.pdb
+F:\EDUCATIVE.IO\Finalized\LinkSpot\BLL\bin\Release\DBLL.dll.config
+F:\EDUCATIVE.IO\Finalized\LinkSpot\BLL\bin\Release\EntityFramework.xml
+F:\EDUCATIVE.IO\Finalized\LinkSpot\BLL\obj\Release\BLL.csproj.AssemblyReference.cache
+F:\EDUCATIVE.IO\Finalized\LinkSpot\BLL\obj\Release\BLL.csproj.CoreCompileInputs.cache
+F:\EDUCATIVE.IO\Finalized\LinkSpot\BLL\obj\Release\BLL.csproj.CopyComplete
+F:\EDUCATIVE.IO\Finalized\LinkSpot\BLL\obj\Release\BLL.dll
+F:\EDUCATIVE.IO\Finalized\LinkSpot\BLL\obj\Release\BLL.pdb

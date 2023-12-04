@@ -1,0 +1,69 @@
+﻿@model IEnumerable<BO.Link>
+@if (TempData["Message"] != null)
+{
+    <h4>@TempData["Message"]</h4>
+}
+
+<table class="table table-light table-responsive w-100 d-block d-md-table table-striped table-hover shadow-lg border border-dark">
+    <tr>
+        <th>@Html.CheckBox("selectall")</th>
+        <th>
+            Title
+        </th>
+        <th>
+            Url
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Approved?
+        </th>
+        <th>
+            Type
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category.CategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Person.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Person.UserEmail)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="col-1">
+                @Html.CheckBox(item.LinkId.ToString(), false, new { @class = "ckb form-check-input", Id = item.LinkId })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td >
+                @Html.DisplayFor(modelItem => item.Url)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Approved)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.CategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Person.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Person.UserEmail)
+            </td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,130 @@
+﻿@model IEnumerable<BO.Link>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="container">
+    <h2 style="font-size: 10vw; font-weight: bold;">Approval</h2>
+</div>
+<script src="~/Scripts/jquery-3.6.0.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+
+        BindSelectAll();
+       
+        $("#Approve").click(function () {
+            checkedIds = $(".ckb").filter(":checked").map(function () { return this.id; });
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("ApproveOrRejectAll","Approval")",
+                traditional: true,
+                data: { Ids: checkedIds.toArray(), Status: "A", CurrentStatus: "@ViewBag.Status" },
+                success: successFunc,
+                error: errorFunc
+            });
+
+            function successFunc(data, status) {
+                $("#Data").html(data);
+                window.location.reload();
+                BindSelectAll();
+            }
+
+            function errorFunc() {
+                alert('error');
+            }
+
+        });
+
+        $("#Reject").click(function () {
+            checkedIds = $(".ckb").filter(":checked").map(function () { return this.id; });
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("ApproveOrRejectAll","Approval")",
+                traditional: true,
+            data:{ Ids:checkedIds.toArray(),Status:"R",CurrentStatus:"@ViewBag.Status"},
+            success: successFunc,
+            error: errorFunc
+        });
+
+            function successFunc(data, status) {
+                $("#Data").html(data);
+                window.location.reload();
+                BindSelectAll();
+        }
+
+        function errorFunc() {
+            alert('error');
+        }
+
+    });
+    });
+
+
+    function BindSelectAll()
+    {
+        $("#selectall").click(function (event) {  //on click
+            if (this.checked) { // check select status
+                $('.ckb').each(function () { //loop through each checkbox
+                    this.checked = true;  //select all checkboxes with class "checkbox1"
+                });
+            } else {
+                $('.ckb').each(function () { //loop through each checkbox
+                    this.checked = false; //deselect all checkboxes with class "checkbox1"
+                });
+            }
+        });
+    }
+
+    function ConfirmApprove() {
+        return confirm('Are you sure you want to Approve?');
+    }
+    function ConfirmReject() {
+        return confirm('Are you sure you want to Reject?');
+    }
+</script>
+<div class="container">
+    @if (TempData["Message"] != null)
+    {
+        <h4>@TempData["Message"]</h4>
+    }
+</div>
+<br />
+<br />
+<div class="container">
+    <h4>
+        @if (ViewBag.Status == "P")
+        {
+            <b>@Html.ActionLink("Pending", "Index", new { Status = "P" }, new { @class = "btn btn-outline-dark" })</b>
+        }
+        else
+        {
+            @Html.ActionLink("Pending", "Index", new { Status = "P" }, new { @class = "btn btn-outline-dark" })
+        }
+        |
+        @if (ViewBag.Status == "A")
+        {
+            <b>@Html.ActionLink("Accepted", "Index", new { Status = "A" }, new { @class = "btn btn-outline-dark" })</b>
+        }
+        else
+        {
+            @Html.ActionLink("Accepted", "Index", new { Status = "A" }, new { @class = "btn btn-outline-dark" })
+        }
+        |
+        @if (ViewBag.Status == "R")
+        {
+            <b>@Html.ActionLink("Rejected", "Index", new { Status = "R" }, new { @class = "btn btn-outline-dark" })</b>
+        }
+        else
+        {
+            @Html.ActionLink("Rejected", "Index", new { Status = "R" }, new { @class = "btn btn-outline-dark" })
+        }
+    </h4>
+    <br />
+    <div id="Partial">
+        @Html.Partial("PV_ApproveURL", Model)
+    </div>
+    <input type="button" id="Approve" value="Approve" class="btn btn-outline-dark" />
+    &nbsp;
+    <input type="button" id="Reject" value="Reject" class="btn btn-outline-dark" />
+</div>

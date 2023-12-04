@@ -1,0 +1,15 @@
+F:\EDUCATIVE.IO\Finalized\LinkSpot\DBLL\bin\Release\DBLL.dll.config
+F:\EDUCATIVE.IO\Finalized\LinkSpot\DBLL\bin\Release\DBLL.dll
+F:\EDUCATIVE.IO\Finalized\LinkSpot\DBLL\bin\Release\DBLL.pdb
+F:\EDUCATIVE.IO\Finalized\LinkSpot\DBLL\bin\Release\BO.dll
+F:\EDUCATIVE.IO\Finalized\LinkSpot\DBLL\bin\Release\EntityFramework.dll
+F:\EDUCATIVE.IO\Finalized\LinkSpot\DBLL\bin\Release\EntityFramework.SqlServer.dll
+F:\EDUCATIVE.IO\Finalized\LinkSpot\DBLL\bin\Release\BO.pdb
+F:\EDUCATIVE.IO\Finalized\LinkSpot\DBLL\bin\Release\BO.dll.config
+F:\EDUCATIVE.IO\Finalized\LinkSpot\DBLL\bin\Release\EntityFramework.xml
+F:\EDUCATIVE.IO\Finalized\LinkSpot\DBLL\bin\Release\EntityFramework.SqlServer.xml
+F:\EDUCATIVE.IO\Finalized\LinkSpot\DBLL\obj\Release\DBLL.csproj.AssemblyReference.cache
+F:\EDUCATIVE.IO\Finalized\LinkSpot\DBLL\obj\Release\DBLL.csproj.CoreCompileInputs.cache
+F:\EDUCATIVE.IO\Finalized\LinkSpot\DBLL\obj\Release\DBLL.csproj.CopyComplete
+F:\EDUCATIVE.IO\Finalized\LinkSpot\DBLL\obj\Release\DBLL.dll
+F:\EDUCATIVE.IO\Finalized\LinkSpot\DBLL\obj\Release\DBLL.pdb

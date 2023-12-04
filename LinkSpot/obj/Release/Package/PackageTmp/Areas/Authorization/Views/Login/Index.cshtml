@@ -1,0 +1,61 @@
+﻿@model BO.Person
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";    
+}
+@using (Html.BeginForm("SignIn", "Login", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+<div class="responsive d-flex w-100">
+    <div align="center" style="background-color: #FBC356" class="container w-100 p-3">
+        <h1 class="fw-bolder" style="font-size: 4vw; font-weight: bolder">Hi There. Welcome Back!</h1>
+        <img src="~/Content/Images/login.png" style="width:40vw; height:40vw;" class="mw-100" alt="Max-width 100%"/>
+    </div>    
+    <div class="container w-100 d-inline-block" align="center">
+        <h1 style="font-size:10vw;font-weight:bolder">Login</h1>
+        <hr />
+        @if (TempData["Message"] != null)
+        {
+            <div class="container alert alert-dismissible alert-dark border border-dark bg-light">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                <strong>Oops!</strong><h4 class="fw-bolder">@TempData["Message"].ToString()</h4>
+</div>
+        }
+        <br />
+        <div class="form-group">
+            <h5 class="text-dark fw-bolder">Email</h5>
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.UserEmail, new { htmlAttributes = new { @class = "form-control border border-dark" } })
+                @Html.ValidationMessageFor(model => model.UserEmail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <h5 class="text-dark fw-bolder">Password</h5>
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control border border-dark" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Login" class="btn btn-outline-dark fw-bolder"/>
+            </div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <div>
+            <div class="row-md-3">
+                <h1 style="font-size:4vw; font-weight:bolder;">Don't Have an Account?</h1>
+                <br />
+                @Html.ActionLink("Register", "Index", new { Controller = "Register", Area = "Authorization" }, new { @class = "btn btn-outline-dark fw-bolder", style = "padding: 20px 40px; font-size: 40px; border-radius: 5px;" })
+            </div>
+        </div>        
+    </div>
+</div>
+}
+
+

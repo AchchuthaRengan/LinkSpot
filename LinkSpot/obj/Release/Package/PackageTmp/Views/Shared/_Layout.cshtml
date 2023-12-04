@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - LinkSpot</title>
+    <meta content='maximum-scale=1.0, initial-scale=1.0, width=device-width' name='viewport'>
+    <link href="~/Content/Images/link.png" rel="shortcut icon" type="image/x-icon" />
+    <link href="~/Content/Css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>    
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom border-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/Public/Home">
+                <img src="~/Content/Images/link.png" width="35" height="35" class="d-inline-block align-top" alt="">
+                <strong>Link<span style="background-color: #FFCE46;">Spot</span></strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("A"))
+                        {
+                            <li class="nav-item">
+                                @Html.ActionLink("Category", "Index", new { Controller = "Category", Area = "Admin" }, new { @class = "nav-link" })
+                            </li>
+                            <li class="nav-item">
+                                @Html.ActionLink("Categories", "Index", new { Controller = "ListCategory", Area = "Admin" }, new { @class = "nav-link" })
+                            </li>
+                            <li class="nav-item">
+                                @Html.ActionLink("Users", "Index", new { Controller = "ListUser", Area = "Admin" }, new { @class = "nav-link" })
+                            </li>
+                            <li class="nav-item">
+                                @Html.ActionLink("Approve", "Index", new { Controller = "Approval", Area = "Admin" }, new { @class = "nav-link" })
+                            </li>
+                        }
+                        if (User.IsInRole("A") | User.IsInRole("U"))
+                        {
+                            <li class="nav-item">
+                                @Html.ActionLink("Browse", "Index", new { Controller = "Browse", Area = "Public" }, new { @class = "nav-link" })
+                            </li>
+                            <li class="nav-item">
+                                @Html.ActionLink("Submit", "Index", new { Controller = "URL", Area = "User" }, new { @class = "nav-link" })
+                            </li>
+                            <li class="nav-item">
+                                @Html.ActionLink("LogOut", "LogOut", new { Controller = "Login", Area = "Authorization" }, new { @class = "nav-link" })
+                            </li>
+                            <li class="nav-item">                                
+                                    <a href="#" class="nav-link">Welcome @User.Identity.Name</a>                                
+                            </li>
+                        }
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            @Html.ActionLink("Browse", "Index", new { Controller = "Browse", Area = "Public" }, new { @class = "nav-link" })
+                        </li>
+                        <li class="nav-item">
+                            <a href="/About/Index" class="nav-link">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/Contact/Index" class="nav-link">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Login", "Index", new { Controller = "Login", Area = "Authorization" }, new { @class = "nav-link" })
+                        </li>
+
+                    }
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    @RenderSection("scripts", required: false)
+    <div class="container-large-desktop body-content ">
+        @RenderBody()
+        <hr />
+        <footer class="container d-flex">
+            <div class="container" align="center">
+                <p>Made With ❤️ In India</p>
+            </div>
+            <div class="container" align="right">
+                <p>LinkSpot - @DateTime.Now.Year</p>
+            </div>
+        </footer>
+    </div>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

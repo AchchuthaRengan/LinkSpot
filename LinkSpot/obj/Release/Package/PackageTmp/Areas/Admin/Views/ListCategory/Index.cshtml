@@ -1,0 +1,71 @@
+﻿@model IEnumerable<BO.Category>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="container">
+    <h2 style="font-size:10vw; font-weight:bold;">Categories</h2>    
+</div>
+<script>
+    function Deletion()
+    {
+        return confirm("Are You Sure..?");
+    }
+</script>
+<div class="container">
+    @if (TempData["Message"] != null)
+    {
+        <h3>@TempData["Message"].ToString()</h3>
+    }
+</div>
+<br />
+<br />
+<div class="container">
+    <table class="table table-light table-striped border border-dark">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    @Html.ActionLink("CategoryName", "Index", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "CategoryName", Page = (ViewBag.Page == null ? "1" : ViewBag.Page) }, new { @class = "text-dark" })
+                </th>
+                <th>
+                    @Html.ActionLink("CategoryDesc", "Index", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "CategoryDesc", Page = (ViewBag.Page == null ? "1" : ViewBag.Page) }, new { @class = "text-dark" })
+                </th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryDesc)
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CategoryId }, new { onClick = "return Deletion()", @class = "btn btn-outline-dark" })
+                </td>
+            </tr>
+        }
+    </table>
+
+    @*Pagination*@
+    @{
+        double TotalPages = ViewBag.TotalPages;
+    }
+<ul class="pagination pagination-lg">
+    @for (int i = 1; i <= TotalPages; i++)
+    {
+
+        if (i == ViewBag.Page)
+        {
+            <li class="page-item active"><strong>@Html.ActionLink(i.ToString() + " ", "Index", new { SortOrder = (ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder), SortBy = (ViewBag.SortBy == null ? "CategoryName" : ViewBag.SortBy), Page = i }, new { @class = "page-link text-dark fw-bolder active" })</strong></li>
+        }
+        else
+        {
+            <li class="page-item">@Html.ActionLink(i.ToString() + " ", "Index", new { SortOrder = (ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder), SortBy = (ViewBag.SortBy == null ? "CategoryName" : ViewBag.SortBy), Page = i }, new { @class = "page-link text-dark" })</li>
+        }
+    }
+</ul>
+    </div>
